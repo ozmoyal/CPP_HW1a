@@ -110,8 +110,31 @@ TEST_CASE("Test replacement of  g and j") {
     string text = "Good programmers write code for humans first and computers next.”";
     CHECK(find(text, "jood") == string("Good"));
     CHECK(find(text, "projrammers") == string("programmers"));
-  
- 
+
+}
+
+TEST_CASE("Test replacement of c, k, q") {
+string text="Hakuna Matata! What a wonderful phrase Hakuna Matata! Ain't no passing craze";
+  CHECK(find(text, "Hacuna") == string("Hakuna"));
+   CHECK(find(text, "Haquna") == string("Hakuna"));
+    CHECK(find(text, "Kraze") == string("craze"));
+    text="I Just Can't Wait to Be King";
+     CHECK(find(text, "kan't) == string("Can't"));
+   CHECK(find(text, "qan't") == string("Can't"));
+    CHECK(find(text, "cing") == string("King"));
+        CHECK(find(text, "qing") == string("King"));
+           CHECK(find(text, "kking") != string("King"));
+
+
+}
+TEST_CASE("long word")
+{
+      string  text= "Supercalifragilisticexpialidocious Mary Poppins";
+     CHECK(find(text, "Supercalifragilisticexpialidocious") != string("Supercalifragilisticexpialidocios"));
+    CHECK(find(text, "Supercalifragilisticexpialidocioos") == string("Supercalifragilisticexpialidocious")); 
+     CHECK(find(text, "Supercalifrajilisticexpialidocious") == string("Supercalifragilisticexpialidocious")); 
+
+
 }
 
 
