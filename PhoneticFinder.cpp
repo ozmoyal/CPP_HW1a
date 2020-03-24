@@ -4,7 +4,8 @@
 using namespace std;
 namespace phonetic{
 string find(string a , string b){
-    return b;
+    string ans = "";
+    return ans;
 }
 
 
