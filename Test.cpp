@@ -102,12 +102,14 @@ TEST_CASE("Test replacement of o and u") {
     CHECK(find(text, "cude") == string("code"));
     CHECK(find(text, "homans") == string("humans"));
     CHECK(find(text, "cumputers") == string("computers"));
+
 }
 
 TEST_CASE("Test replacement of s and z") {
     string text = "Software testers always go to heaven; they’ve already had their fair share of hell.”";
     CHECK(find(text, "zoftware") == string("Software"));
     CHECK(find(text, "tezters") == string("testers"));
+    CHECK(find(text, "tezterz") == string("testers"));
     CHECK(find(text, "testerz") == string("testers"));
     CHECK(find(text, "alwayz") == string("always"));
     CHECK(find(text, "zhare") == string("share"));
@@ -118,7 +120,14 @@ TEST_CASE("Test replacement of  g and j") {
     string text = "Good programmers write code for humans first and computers next.”";
     CHECK(find(text, "jood") == string("Good"));
     CHECK(find(text, "projrammers") == string("programmers"));
-
+    text=" If you don't know, just Google it";
+    CHECK(find(text, "gust") == string("just"));
+    CHECK(find(text, "JUST") == string("just"));
+    CHECK(find(text, "GooGle ") == string("Google "));
+    CHECK(find(text, "Joogle ") == string("Google "));
+    CHECK(find(text, "JooJle ") == string("Google "));
+    CHECK(find(text, "GooJle ") == string("Google "));
+    CHECK(find(text, "Gogle ") != string("Google "));
 }
 
 TEST_CASE("Test replacement of c, k, q") {
@@ -141,6 +150,9 @@ TEST_CASE("long word")
     CHECK(find(text, "Supercalifragilisticexpialidocious") != string("Supercalifragilisticexpialidocios"));
     CHECK(find(text, "Supercalifragilisticexpialidocioos") == string("Supercalifragilisticexpialidocious")); 
     CHECK(find(text, "Supercalifrajilisticexpialidocious") == string("Supercalifragilisticexpialidocious")); 
+    CHECK(find(text, "zupercalifrajilisticexpialidocious") == string("Supercalifragilisticexpialidocious")); 
+    CHECK(find(text, "Superqalifragilisticexpialidokious") == string("Supercalifragilisticexpialidocious")); 
+
 }
 
 
