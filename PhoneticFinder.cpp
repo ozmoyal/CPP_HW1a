@@ -1,5 +1,7 @@
 #include <string>
+#include <cstring>
 #include <iostream>
+#include <stdexcept>
 #include "PhoneticFinder.hpp"
 using namespace std;
 namespace phonetic{
@@ -61,6 +63,7 @@ string find(string a , string b){
        ans="";
    }
    throw out_of_range("ERR, the word is'nt in the txt");
+   return "ERR";
 }
 int equalWord(string a , string b)
     {
