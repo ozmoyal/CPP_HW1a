@@ -15,7 +15,7 @@ namespace phonetic{
         }
         if(a1==a2) return 1;
         //v,w case
-        if((a1=='v') && (a2=='w'))||((a1=='w') && (a2=='v')))
+        if(((a1=='v') && (a2=='w'))||((a1=='w') && (a2=='v')))
         return 1;
         //g,j case
          if(((a1=='g') && (a2=='j'))||((a1=='j') && (a2=='g')))
@@ -44,9 +44,34 @@ namespace phonetic{
        
     }
 string find(string a , string b){
-    string ans = "";
-    return ans;
+   if (b.size()==0) throw out_of_range("ERR, empty word");
+   for(int i=0;i<b.size();i++)
+   {
+   if(isspace(b.at(i)))  throw out_of_range("ERR, more then one word");
+   }
+   string ans="";
+   for (int i=0;i<a.size();i++)
+   {
+       while((i<a.size() )&&(!isspace(a.at(i))))
+       {
+           ans=ans+a.at(i);
+           i++;
+       }
+       if(equalWord(ans,b)) return ans;
+       ans="";
+   }
+   throw out_of_range("ERR, the word is'nt in the txt");
 }
+int equalWord(string a , string b)
+    {
+        if(a.size()!=b.size()) return 0;
+        for(int i=0;i<a.size();i++)
+        {
+            if(swapLeter(a.at(i),b.at(i))==0)
+            return 0;
+        }
+        return 1;
 
+    }
 
 }
