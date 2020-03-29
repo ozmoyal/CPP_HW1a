@@ -1,8 +1,12 @@
 #include <string>
+#include <cstring>
 #include <iostream>
+#include <stdexcept>
 #include "PhoneticFinder.hpp"
 using namespace std;
+
 namespace phonetic{
+    
     int swapLeter(char a1,char a2)
     {
         if((a1>='A')&&(a1<='Z'))
@@ -41,9 +45,20 @@ namespace phonetic{
 
         //ERE 
         return 0;
-       
     }
-string find(string a , string b){
+
+int equalWord(string a , string b)
+    {
+        if(a.size()!=b.size()) return 0;
+        for(int i=0;i<a.size();i++)
+        {
+            if(swapLeter(a.at(i),b.at(i))==0)
+            return 0;
+        }
+        return 1;
+    }
+
+    string find(string a , string b){
    if (b.size()==0) throw out_of_range("ERR, empty word");
    for(int i=0;i<b.size();i++)
    {
@@ -62,16 +77,4 @@ string find(string a , string b){
    }
    throw out_of_range("ERR, the word is'nt in the txt");
 }
-int equalWord(string a , string b)
-    {
-        if(a.size()!=b.size()) return 0;
-        for(int i=0;i<a.size();i++)
-        {
-            if(swapLeter(a.at(i),b.at(i))==0)
-            return 0;
-        }
-        return 1;
-
-    }
-
 }
