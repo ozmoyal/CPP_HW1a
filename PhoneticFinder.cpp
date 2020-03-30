@@ -7,7 +7,7 @@ using namespace std;
 
 namespace phonetic{
     
-    int swapLeter(char a1,char a2)
+    int swapLetter(char a1 , char a2)
     {
         if((a1>='A')&&(a1<='Z'))
         {
@@ -42,7 +42,6 @@ namespace phonetic{
          // c, k, q case 
         if(((a1=='c') &&((a2=='k') ||(a2=='q'))) || ((a1=='k') &&((a2=='c') ||(a2=='q'))) ||
         ((a1=='q') &&((a2=='k') ||(a2=='c')))) return 1;
-
         //ERE 
         return 0;
     }
@@ -52,27 +51,27 @@ int equalWord(string a , string b)
         if(a.size()!=b.size()) return 0;
         for(int i=0;i<a.size();i++)
         {
-            if(swapLeter(a.at(i),b.at(i))==0)
+            if(swapLetter(a.at(i),b.at(i))==0)
             return 0;
         }
         return 1;
     }
 
-    string find(string a , string b){
-   if (b.size()==0) throw out_of_range("ERR, empty word");
-   for(int i=0;i<b.size();i++)
+    string find(string text , string word){
+   if (word.size()==0) throw out_of_range("ERR, empty word");
+   for(int i=0;i<word.size();i++)
    {
-   if(isspace(b.at(i)))  throw out_of_range("ERR, more then one word");
+   if(isspace(word.at(i)))  throw out_of_range("ERR, more then one word");
    }
    string ans="";
-   for (int i=0;i<a.size();i++)
+   for (int i=0;i<text.size();i++)
    {
-       while((i<a.size() )&&(!isspace(a.at(i))))
+       while((i<text.size() )&&(!isspace(text.at(i))))
        {
-           ans=ans+a.at(i);
+           ans=ans+text.at(i);
            i++;
        }
-       if(equalWord(ans,b)) return ans;
+       if(equalWord(ans,word)) return ans;
        ans="";
    }
    throw out_of_range("ERR, the word is'nt in the txt");

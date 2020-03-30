@@ -136,8 +136,8 @@ TEST_CASE("Test replacement of c, k, q") {
     CHECK(find(text, "Haquna") == string("Hakuna"));
     CHECK(find(text, "Kraze") == string("craze"));
     text="I Just Can't Wait to Be King";
-    CHECK(find(text, "kant") == string("Cant"));
-    CHECK(find(text, "qant") == string("Cant"));
+    CHECK(find(text, "kan't") == string("Can't"));
+    CHECK(find(text, "qan't") == string("Can't"));
     CHECK(find(text, "cing") == string("King"));
     CHECK(find(text, "qing") == string("King"));
     CHECK(find(text, "kking") != string("King"));
